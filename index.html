@@ -4,134 +4,169 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>PokéControl Center</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@400;500;700&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg: #f6f7fb;
-      --card: #fff;
-      --primary: #ffcb05;
-      --secondary: #3b4cca;
-      --danger: #e63946;
-      --success: #2a9d8f;
-      --warning: #f4a261;
-      --neutral: #6c757d;
-      --text: #1f1f1f;
+      --bg: #f5f8ff;
+      --card: #ffffff;
+      --border: #1f1f1f0d;
+      --accent: #ffcb05;
+      --accent-dark: #ea3d2f;
+      --blue: #3b4cca;
+      --green: #1ec28b;
+      --text: #141414;
     }
     * { box-sizing: border-box; }
     body {
       margin: 0;
-      padding: 2rem;
-      font-family: 'Roboto', sans-serif;
+      padding: 32px;
+      font-family: 'Inter', sans-serif;
       background: var(--bg);
       color: var(--text);
     }
     header.hero {
+      background: linear-gradient(135deg, #ffcb05, #f86b27);
+      border-radius: 28px;
+      padding: 28px;
+      color: #1f1f1f;
       display: flex;
       flex-wrap: wrap;
+      gap: 20px;
       align-items: center;
       justify-content: space-between;
-      gap: 1rem;
-      margin-bottom: 2rem;
+      box-shadow: 0 20px 40px rgba(248,107,39,0.35);
     }
     header.hero h1 {
-      font-family: 'Press Start 2P', cursive;
-      font-size: clamp(1.4rem, 4vw, 2.2rem);
       margin: 0;
-      color: var(--secondary);
+      font-family: 'Press Start 2P', cursive;
+      font-size: clamp(1.4rem, 3vw, 2rem);
     }
-    header.hero p {
-      margin: 0.3rem 0;
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.85);
+      font-weight: 600;
+      font-size: 0.85rem;
     }
     .grid {
+      margin-top: 28px;
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
-      margin-bottom: 2rem;
+      gap: 20px;
     }
     .card {
       background: var(--card);
-      border-radius: 18px;
-      padding: 1.2rem;
-      box-shadow: 0 12px 24px rgba(0,0,0,0.08);
-      border: 3px solid #1f1f1f10;
+      border-radius: 22px;
+      padding: 20px;
+      box-shadow: 0 12px 30px rgba(3,15,54,0.07);
+      border: 1px solid var(--border);
     }
-    .card header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-      margin-bottom: 1rem;
+    .card h2 {
+      margin: 0 0 12px;
+      font-size: 1.1rem;
+      font-family: 'Press Start 2P', cursive;
+      color: var(--blue);
     }
-    .card h3, .card h4 {
-      margin: 0;
-      font-size: 1rem;
-    }
-    .status {
-      padding: 0.3rem 0.8rem;
-      border-radius: 999px;
-      font-size: 0.8rem;
-      font-weight: 600;
-      color: white;
-    }
-    .status-success { background: var(--success); }
-    .status-warning { background: var(--warning); }
-    .status-danger { background: var(--danger); }
-    .status-neutral { background: var(--neutral); }
-    .card-body { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-    .badge {
-      display: inline-flex;
-      gap: 0.4rem;
-      align-items: center;
-      padding: 0.35rem 0.75rem;
-      border-radius: 999px;
-      font-size: 0.8rem;
-      background: var(--bg);
-    }
-    .badge-primary { background: var(--primary); color: #1f1f1f; }
-    .badge-secondary { background: var(--secondary); color: white; }
-    .badge-success { background: var(--success); color: white; }
-    .badge-danger { background: var(--danger); color: white; }
-    .badge-warning { background: var(--warning); color: #1f1f1f; }
-    .badge-neutral { background: #e0e0e0; color: #1f1f1f; }
-    .sub-card {
-      width: 100%;
-      background: #fdf6e3;
-      border-radius: 14px;
-      padding: 0.8rem;
-    }
-    .sub-card-header {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 0.6rem;
-      font-weight: 600;
-    }
-    .pill {
-      padding: 0.2rem 0.6rem;
-      border-radius: 999px;
-      background: var(--primary);
-    }
-    .table {
+    .party {
       display: flex;
       flex-direction: column;
-      gap: 0.6rem;
+      gap: 14px;
     }
-    .table-row {
+    .pokemon-card {
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 16px;
+      display: flex;
+      gap: 14px;
+      background: linear-gradient(135deg, rgba(59,76,202,0.08), rgba(255,203,5,0.05));
+    }
+    .pokemon-icon {
+      width: 56px;
+      height: 56px;
+      background: #fff;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      box-shadow: inset 0 0 0 3px rgba(59,76,202,0.1);
+    }
+    .pokemon-body h3 {
+      margin: 0;
+      font-size: 1rem;
+      font-weight: 700;
+    }
+    .pokemon-body p {
+      margin: 4px 0 0;
+      font-size: 0.9rem;
+      color: #4a4a4a;
+    }
+    .progress {
+      margin-top: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: rgba(20,20,20,0.08);
+      overflow: hidden;
+    }
+    .progress span {
+      display: block;
+      height: 100%;
+      border-radius: inherit;
+    }
+    .todo-list {
+      margin-top: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .todo-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 12px;
+      border-radius: 14px;
+      background: rgba(20,20,20,0.04);
+      font-size: 0.9rem;
+    }
+    .todo-item.done {
+      background: rgba(30,194,139,0.12);
+      color: #0b5c41;
+    }
+    .todo-item.in-progress {
+      background: rgba(255,203,5,0.2);
+      color: #6c4c00;
+    }
+    .channels .channel {
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 14px;
       display: flex;
       justify-content: space-between;
-      padding: 0.8rem;
-      border-radius: 12px;
-      background: #fdf2f8;
+      align-items: center;
+      background: rgba(59,76,202,0.05);
     }
-    .remediation {
+    .status-pill {
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+    .status-ok { background: rgba(30,194,139,0.2); color: #0a4e37; }
+    .status-wip { background: rgba(255,203,5,0.2); color: #6c4c00; }
+    .status-blocked { background: rgba(234,61,47,0.15); color: #8f1c11; }
+    footer {
+      margin-top: 32px;
+      text-align: center;
       font-size: 0.85rem;
-      color: #5d2a42;
-      margin: 0.4rem 0 0;
+      color: #666;
     }
-    @media (max-width: 600px) {
-      body { padding: 1rem; }
-      header.hero { flex-direction: column; align-items: flex-start; }
+    @media (max-width: 640px) {
+      body { padding: 20px; }
+      header.hero { padding: 22px; }
     }
   </style>
 </head>
@@ -139,190 +174,102 @@
   <header class="hero">
     <div>
       <h1>PokéControl Center</h1>
-      <p>Entrenador: Leco · Región: Mar del Plata</p>
-      <p>Última actualización: 3/14/2026, 5:58:53 PM</p>
+      <p>Entrenador: Leco · Región: Mar del Plata · Centro operativo WhatsApp + GitHub Pages</p>
+      <div class="badge">🎯 Misiones activas: 2</div>
+      <div class="badge">🛡️ Estado general: En marcha</div>
     </div>
     <div>
-      
-  <span class="badge badge-primary">
-    <strong>Gateway:</strong> 2026.3.13 · local
-  </span>
-
-      
-  <span class="badge badge-warning">
-    <strong>Servicio:</strong> running (pid 38039, state active)
-  </span>
-
+      <div class="badge">⚡ Última sincronización: 14 Mar 2026 · 20:45 UTC</div>
+      <div class="badge">📡 Gateway WhatsApp: Linked + allowlist +5492236838759</div>
     </div>
   </header>
-  <section>
-    <h2>Canales</h2>
-    <div class="grid">
-      
-    <article class="card channel">
-      <header>
-        <div>
-          <h3>WhatsApp</h3>
-          <p>WhatsApp Web</p>
+
+  <section class="grid party">
+    <article class="card">
+      <h2>Equipo de Campo</h2>
+      <div class="pokemon-card">
+        <div class="pokemon-icon">⚡</div>
+        <div class="pokemon-body">
+          <h3>Pikachu · Operación Lovable Gym</h3>
+          <p>Detectar comercios sin web, generar landing demo y preparar pitch.</p>
+          <div class="progress"><span style="width:55%; background:var(--blue);"></span></div>
+          <div class="todo-list">
+            <div class="todo-item done">✔️ Acceso Lovable armado + SSH a GitHub</div>
+            <div class="todo-item in-progress">⚡ Scraper IG/Maps (primer lote 50 comercios)</div>
+            <div class="todo-item">⬜ Plantilla de landing + envío para aprobación</div>
+            <div class="todo-item">⬜ Autorización para mailing automático</div>
+          </div>
         </div>
-        <div class="status status-success">Online</div>
-      </header>
-      <div class="card-body">
-        
-  <span class="badge badge-secondary">
-    <strong>Linked number:</strong> +5492235556736
-  </span>
-
-        
-  <span class="badge badge-neutral">
-    <strong>Last message:</strong> 6m 19s ago
-  </span>
-
-        
-    <div class="sub-card">
-      <div class="sub-card-header">
-        <span>Account: default</span>
-        <span class="pill">Linked</span>
       </div>
-      <div class="sub-card-body">
-        
-  <span class="badge badge-neutral">
-    <strong>DM Policy:</strong> allowlist
-  </span>
 
-        
-  <span class="badge badge-secondary">
-    <strong>Allow:</strong> +5492236838759
-  </span>
-
-        
-  <span class="badge badge-secondary">
-    <strong>Last inbound:</strong> 6m 14s ago
-  </span>
-
-      </div>
-    </div>
-  
+      <div class="pokemon-card">
+        <div class="pokemon-icon">🔥</div>
+        <div class="pokemon-body">
+          <h3>Charizard · Operación Martu Cicatriz</h3>
+          <p>Crear influencer IA glow-up + posting diario multi red.</p>
+          <div class="progress"><span style="width:40%; background:var(--accent-dark);"></span></div>
+          <div class="todo-list">
+            <div class="todo-item done">✔️ Gmail + credenciales Martu listos</div>
+            <div class="todo-item done">✔️ Fotos referencia 2015 + actual</div>
+            <div class="todo-item in-progress">🔥 Generar versiones IA 2013/actual + guía visual</div>
+            <div class="todo-item">⬜ Crear IG / TikTok / X y configurar Runway</div>
+            <div class="todo-item">⬜ Primer video glow-up + copy cross-post</div>
+          </div>
+        </div>
       </div>
     </article>
-  
-    </div>
-  </section>
-  <section>
-    <h2>Agentes</h2>
-    <div class="grid">
-      
-  <article class="card agent">
-    <header>
-      <h3>main</h3>
-      <div class="status status-success">Active</div>
-    </header>
-    <div class="card-body">
-      
-  <span class="badge badge-secondary">
-    <strong>Sessions:</strong> 1
-  </span>
 
-      
-  <span class="badge badge-neutral">
-    <strong>Last activity:</strong> 1m 39s
-  </span>
-
-    </div>
-  </article>
-
-    </div>
-  </section>
-  <section>
-    <h2>Sesiones recientes</h2>
-    <div class="card">
-      <div class="table">
-        
-  <div class="table-row">
-    <div>
-      <strong>agent:main:main</strong>
-      <p>gpt-5.1-codex</p>
-    </div>
-    <div>
-      <span>40645 tokens</span>
-      <span>1m 44s ago</span>
-    </div>
-  </div>
-
+    <article class="card">
+      <h2>Misiones activas</h2>
+      <div class="todo-list">
+        <div class="todo-item in-progress">🏋️‍♂️ Gimnasio Lovable · fase discovery (datos en curso)</div>
+        <div class="todo-item in-progress">🌟 Martu Cicatriz · narrativa 2013→2026 en producción</div>
+        <div class="todo-item">🛰️ Integrar dashboard con métricas en vivo del gateway</div>
+        <div class="todo-item">📣 Automatizar WhatsApp para recordatorios de proyectos</div>
       </div>
-    </div>
-  </section>
-  
-  <section class="card heartbeat">
-    <header>
-      <h3>Heartbeats</h3>
-      <div class="status status-success">30m</div>
-    </header>
-    
-      <div class="card-body">
-        
-  <span class="badge badge-secondary">
-    <strong>Agent:</strong> main
-  </span>
+      <h2 style="margin-top:24px;">Próximos hitos</h2>
+      <ul style="padding-left:18px; line-height:1.6;">
+        <li>Entregar lote inicial de 50 comercios + landing demo.</li>
+        <li>Publicar primer reel glow-up de Martu en IG/TikTok.</li>
+        <li>Sumar panel de notificaciones automáticas al dashboard.</li>
+      </ul>
+    </article>
 
-        
-  <span class="badge badge-neutral">
-    <strong>Interval:</strong> 30m
-  </span>
-
+    <article class="card channels">
+      <h2>Canales y sistemas</h2>
+      <div class="channel">
+        <div>
+          <strong>WhatsApp Gateway</strong>
+          <p style="margin:2px 0 0; color:#4a4a4a;">+54 9 223 555‑6736 · allowlist +5492236838759</p>
+        </div>
+        <span class="status-pill status-ok">Linked</span>
       </div>
-    
+      <div class="channel">
+        <div>
+          <strong>GitHub Pages</strong>
+          <p style="margin:2px 0 0; color:#4a4a4a;">agustinlecona07-lab/pokemon-control-center</p>
+        </div>
+        <span class="status-pill status-ok">Online</span>
+      </div>
+      <div class="channel">
+        <div>
+          <strong>Martu HQ</strong>
+          <p style="margin:2px 0 0; color:#4a4a4a;">Gmail operativo · cuentas en creación</p>
+        </div>
+        <span class="status-pill status-wip">En curso</span>
+      </div>
+      <div class="channel">
+        <div>
+          <strong>Lovable Builder</strong>
+          <p style="margin:2px 0 0; color:#4a4a4a;">Acceso listo · parsing UI</p>
+        </div>
+        <span class="status-pill status-wip">Mapeando</span>
+      </div>
+    </article>
   </section>
 
-  <section>
-    <h2>Seguridad</h2>
-    <div class="grid">
-      
-    <article class="card security">
-      <header>
-        <h4>Attack surface summary</h4>
-        <div class="status status-neutral">Info</div>
-      </header>
-      <p>groups: open=0, allowlist=1
-tools.elevated: enabled
-hooks.webhooks: disabled
-hooks.internal: disabled
-browser control: enabled
-trust model: personal assistant (one trusted operator boundary), not hostile multi-tenant on one shared gateway</p>
-      
-    </article>
-  
-
-    <article class="card security">
-      <header>
-        <h4>Reverse proxy headers are not trusted</h4>
-        <div class="status status-warning">Warn</div>
-      </header>
-      <p>gateway.bind is loopback and gateway.trustedProxies is empty. If you expose the Control UI through a reverse proxy, configure trusted proxies so local-client checks cannot be spoofed.</p>
-      <p class="remediation">Fix: Set gateway.trustedProxies to your proxy IPs or keep the Control UI local-only.</p>
-    </article>
-  
-
-    <article class="card security">
-      <header>
-        <h4>Gateway token looks short</h4>
-        <div class="status status-warning">Warn</div>
-      </header>
-      <p>gateway auth token is 22 chars; prefer a long random token.</p>
-      
-    </article>
-  
-
-    <article class="card security">
-      <header>
-        <h4>Credentials dir is writable by others</h4>
-        <div class="status status-danger">Critical</div>
-      </header>
-      <p>/home/almaquinadigital/.openclaw/credentials mode=775; another user could drop/modify credential files.</p>
-      <p class="remediation">Fix: chmod 700 /home/almaquinadigital/.openclaw/credentials</p>
-    </article>
-  
-    </div>
-  </section>
+  <footer>
+    Centro actualizado manualmente · Próxima iteración: incorporar datos en vivo del gateway y cron de publicaciones.
+  </footer>
 </body>
 </html>
