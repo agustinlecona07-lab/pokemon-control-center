@@ -158,6 +158,28 @@
     .status-ok { background: rgba(30,194,139,0.2); color: #0a4e37; }
     .status-wip { background: rgba(255,203,5,0.2); color: #6c4c00; }
     .status-blocked { background: rgba(234,61,47,0.15); color: #8f1c11; }
+    .activity {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .activity li {
+      padding: 12px 14px;
+      border-radius: 14px;
+      background: rgba(20,20,20,0.05);
+      font-size: 0.9rem;
+      line-height: 1.4;
+    }
+    .activity time {
+      font-size: 0.8rem;
+      color: #666;
+      display: block;
+      margin-bottom: 4px;
+    }
+
     footer {
       margin-top: 32px;
       text-align: center;
@@ -267,6 +289,15 @@
       </div>
     </article>
   </section>
+
+  <article class="card">
+      <h2>Actividad reciente</h2>
+      <ul class="activity">
+        <li><time>21:05 UTC</time>⚡ Consulta Overpass completa · 60 comercios sin web guardados en <code>lovable/leads.csv</code>.</li>
+        <li><time>21:12 UTC</time>🧱 Definiendo plantilla Lovable (#1) para enviar al primer prospecto.</li>
+        <li><time>21:18 UTC</time>🔥 Ajustando dashboard + preparando integración de log vivo.</li>
+      </ul>
+    </article>
 
   <footer>
     Centro actualizado manualmente · Próxima iteración: incorporar datos en vivo del gateway y cron de publicaciones.
